@@ -5,6 +5,18 @@ class Tooltip extends HTMLElement {
         this.attachShadow({mode:'open'}); //use the shadow DOM instead of the light DOM
 
         this.shadowRoot.innerHTML = `
+            <style>
+                div{
+                    background-color:black;
+                    color:white;
+                    position:absolute;
+                    z-index:1000;
+                }
+
+                span{
+                    position:relative;
+                }
+            </style>
             <slot></slot>
             <span> (?)</span>
         `;
@@ -21,16 +33,11 @@ class Tooltip extends HTMLElement {
         tooltipIcon.addEventListener('mouseleave', this._hideTooltip.bind(this));
 
         this.shadowRoot.appendChild(tooltipIcon);
-        this.style.position = 'relative';
-        this.style.zIndex = 100;
     }
 
     _showTooltip(){
         this._tooltipContainer = document.createElement('div');
         this._tooltipContainer.textContent = this._tooltipText;
-        this._tooltipContainer.style.backgroundColor = 'black';
-        this._tooltipContainer.style.color = 'white';
-        this._tooltipContainer.style.position = 'absolute';
         this.shadowRoot.appendChild(this._tooltipContainer);
     }
 
