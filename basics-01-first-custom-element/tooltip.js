@@ -13,6 +13,10 @@ class Tooltip extends HTMLElement {
                     z-index:1000;
                 }
 
+                :host{
+                    background:#ccc;
+                }
+
                 span{
                     position:relative;
                 }
@@ -20,9 +24,17 @@ class Tooltip extends HTMLElement {
                 ::slotted(.highlighted){
                     border-bottom:1px solid red;
                 }
+
+                .icon{
+                    background-color:black;
+                    color:white;
+                    padding:0.15rem .5rem;
+                    text-align:center;
+                    border-radius:50%;
+                }
             </style>
             <slot></slot>
-            <span> (?)</span>
+            <span class="icon">?</span>
         `;
     }
 
