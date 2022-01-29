@@ -10,11 +10,18 @@ class Tooltip extends HTMLElement {
                     background-color:black;
                     color:white;
                     position:absolute;
+                    top:1.5rem;
+                    left:0.75rem;
                     z-index:1000;
+                    padding:0.25rem;
+                    border-radius:3px;
+                    box-shadow:1px 1px 6px rgba(0,0,0,0.26);
+                    font-weight:normal;
                 }
 
                 :host(.important){
                     background:var(--color-primary, #ccc);
+                    padding:.15rem;
                 }
 
                 :host-context(p) {
