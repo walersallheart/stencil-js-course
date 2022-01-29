@@ -2,6 +2,7 @@ class Tooltip extends HTMLElement {
     constructor(){
         super();
         this._tooltipContainer;
+        this.attachShadow({mode:'open'}); //use the shadow DOM instead of the light DOM
     }
 
     //this is a built in function you need to use for DOM manupulation
@@ -15,7 +16,7 @@ class Tooltip extends HTMLElement {
         tooltipIcon.addEventListener('mouseenter', this._showTooltip.bind(this));
         tooltipIcon.addEventListener('mouseleave', this._hideTooltip.bind(this));
 
-        this.appendChild(tooltipIcon);
+        this.shadowRoot.appendChild(tooltipIcon);
         this.style.position = 'relative';
         this.style.zIndex = 100;
     }
@@ -26,11 +27,11 @@ class Tooltip extends HTMLElement {
         this._tooltipContainer.style.backgroundColor = 'black';
         this._tooltipContainer.style.color = 'white';
         this._tooltipContainer.style.position = 'absolute';
-        this.appendChild(this._tooltipContainer);
+        this.shadowRoot.appendChild(this._tooltipContainer);
     }
 
     _hideTooltip(){
-        this.removeChild(this._tooltipContainer);
+        this.shadowRoot.removeChild(this._tooltipContainer);
     }
 }
 
