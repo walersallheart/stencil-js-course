@@ -5,8 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
   <title>Stencil Component Starter</title>
   <script src="build/mycomponent.js"></script>
+  <style>
+    body{
+      font-family: sans-serif;
+    }
+
+    .side-nav{
+      list-style: none;
+    }
+
+    .side-nav li{
+      margin:1rem 0;
+    }
+
+    .side-nav a{
+      text-decoration: none;
+      color:black;
+    }
+  </style>
 </head>
 <body>
-  <uc-side-drawer title="Main Menu"></uc-side-drawer>
+  <uc-side-drawer title="Main Menu">
+    <ul class="side-nav">
+      <li><a href="/">A Link</a></li>
+      <li><a href="/">Another Link</a></li>
+      <li><a href="/">A Third Link</a></li>
+    </ul>
+  </uc-side-drawer>
 </body>
 </html>
