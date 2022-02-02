@@ -8,9 +8,15 @@ import { API_KEY } from '../../../config/config.js';
 })
 
 export class StockPrice{
+    onFetchStockPrice(event:Event){
+        event.preventDefault();
+        console.log('submitted');
+        console.log(API_KEY);
+    }
+
     render(){
         return [
-            <form>
+            <form onSubmit={this.onFetchStockPrice}>
                 <input id="stock-symbol" />
                 <button type="submit">Fetch</button>
             </form>,
