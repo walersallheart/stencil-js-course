@@ -69,3 +69,7 @@ header button:focus{
 #tabs button:focus{
     outline:none;
 }
+
+#contact-information{
+    padding:0 1rem;
+}
