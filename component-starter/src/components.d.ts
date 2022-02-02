@@ -21,15 +21,20 @@ export namespace Components {
     'opened'?: boolean;
     'title'?: string;
   }
+
+  interface UcStockPrice {}
+  interface UcStockPriceAttributes extends StencilHTMLAttributes {}
 }
 
 declare global {
   interface StencilElementInterfaces {
     'UcSideDrawer': Components.UcSideDrawer;
+    'UcStockPrice': Components.UcStockPrice;
   }
 
   interface StencilIntrinsicElements {
     'uc-side-drawer': Components.UcSideDrawerAttributes;
+    'uc-stock-price': Components.UcStockPriceAttributes;
   }
 
 
@@ -39,12 +44,20 @@ declare global {
     new (): HTMLUcSideDrawerElement;
   };
 
+  interface HTMLUcStockPriceElement extends Components.UcStockPrice, HTMLStencilElement {}
+  var HTMLUcStockPriceElement: {
+    prototype: HTMLUcStockPriceElement;
+    new (): HTMLUcStockPriceElement;
+  };
+
   interface HTMLElementTagNameMap {
     'uc-side-drawer': HTMLUcSideDrawerElement
+    'uc-stock-price': HTMLUcStockPriceElement
   }
 
   interface ElementTagNameMap {
     'uc-side-drawer': HTMLUcSideDrawerElement;
+    'uc-stock-price': HTMLUcStockPriceElement;
   }
 
 
