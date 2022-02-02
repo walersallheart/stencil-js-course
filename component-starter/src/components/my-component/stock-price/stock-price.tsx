@@ -1,5 +1,5 @@
 import { Component, State } from "@stencil/core";
-import { API_KEY } from '../../../config/config.js';
+import { API_KEY } from '../../../config/config';
 
 @Component({
     tag:'uc-stock-price',
@@ -12,10 +12,8 @@ export class StockPrice{
 
     onFetchStockPrice(event:Event){
         event.preventDefault();
-        console.log('submitted');
-        console.log(API_KEY);
 
-        fetch('https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo')
+        fetch(`https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=${API_KEY}`)
             .then(response => {
                 return response.json()
             })
