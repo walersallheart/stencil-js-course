@@ -13,11 +13,12 @@ import '@stencil/core';
 export namespace Components {
 
   interface UcSideDrawer {
-    'open': boolean;
+    'open': () => void;
+    'opened': boolean;
     'title': string;
   }
   interface UcSideDrawerAttributes extends StencilHTMLAttributes {
-    'open'?: boolean;
+    'opened'?: boolean;
     'title'?: string;
   }
 }
