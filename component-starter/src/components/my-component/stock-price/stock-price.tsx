@@ -9,6 +9,8 @@ import { API_KEY } from '../../../config/config';
 
 export class StockPrice{
     stockInput:HTMLInputElement;
+    initialStockSymbol:string;
+
     @Element() rootElement: HTMLElement;
     @State() fetchedPrice:number;
     @State() stockUserInput:string;
@@ -42,6 +44,9 @@ export class StockPrice{
 
     componentDidLoad(){
         if (this.stockSymbol) {
+            this.initialStockSymbol = this.stockSymbol;
+            this.stockUserInput = this.stockSymbol;
+            this.stockInputValid = true;
             this.fetchStockPrice(this.stockSymbol);
         }
     }
@@ -52,6 +57,10 @@ export class StockPrice{
 
     componentDidUpdate(){
         console.log('componentDidUpdate');
+        if (this.stockSymbol !== this.initialStockSymbol) {
+            this.initialStockSymbol = this.stockSymbol;
+            this.fetchStockPrice(this.stockSymbol);
+        }
     }
 
     componentWillUnload(){
