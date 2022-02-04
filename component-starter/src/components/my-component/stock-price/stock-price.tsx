@@ -1,4 +1,4 @@
-import { Component, Element, Prop, State, Watch } from "@stencil/core";
+import { Component, Element, Listen, Prop, State, Watch } from "@stencil/core";
 import { API_KEY } from '../../../config/config';
 
 @Component({
@@ -23,6 +23,7 @@ export class StockPrice{
     stockSymbolChanged(newValue:string, oldValue:string){
         if (newValue !== oldValue)  {
             this.stockUserInput = newValue;
+            this.stockInputValid = true;
             this.fetchStockPrice(newValue);
         }
     }
@@ -76,6 +77,14 @@ export class StockPrice{
 
     componentDidUnload(){
         console.log('componentDidUnload');
+    }
+
+    @Listen('body:ucSymbolSelected')
+    onStockSymbolSelected(event:CustomEvent){
+        console.log('onStockSymbolSelected');
+        if (event.detail && event.detail != this.stockSymbol){
+            this.stockSymbol = event.detail;
+        }
     }
 
     fetchStockPrice(stockSymbol:string){
