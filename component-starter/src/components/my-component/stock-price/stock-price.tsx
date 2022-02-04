@@ -107,8 +107,14 @@ export class StockPrice{
             })
             .catch(err => {
                 this.error = err.message;
-                console.log(err)
+                this.fetchedPrice = null;
             });
+    }
+
+    hostData(){
+        return {
+            class: this.error ? 'error' : ''
+        };
     }
 
     render(){
