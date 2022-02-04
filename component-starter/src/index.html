@@ -43,6 +43,12 @@
     //     sideDrawer.open();
     //   }
     // })
+
+    const stockFinder = document.querySelector('uc-stock-finder');
+
+    stockFinder.addEventListener('ucSymbolSelected', event => {
+      console.log(event);
+    })
   </script>
 </body>
 </html>

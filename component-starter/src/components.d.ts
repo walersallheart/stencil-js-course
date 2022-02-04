@@ -30,7 +30,9 @@ export namespace Components {
   }
 
   interface UcStockFinder {}
-  interface UcStockFinderAttributes extends StencilHTMLAttributes {}
+  interface UcStockFinderAttributes extends StencilHTMLAttributes {
+    'onUcSymbolSelected'?: (event: CustomEvent<string>) => void;
+  }
 }
 
 declare global {
