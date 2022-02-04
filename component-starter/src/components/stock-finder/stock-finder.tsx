@@ -1,4 +1,4 @@
-import { Component } from "@stencil/core";
+import { Component, State } from "@stencil/core";
 import { API_KEY } from '../../config/config';
 
 @Component({
@@ -9,7 +9,9 @@ import { API_KEY } from '../../config/config';
 
 export class StockFinder{
     stockNameInput:HTMLInputElement;
-    
+
+    @State() searchResults:{symbol:string, name:string}[] = [];
+
     onFindStocks(event:Event){
         event.preventDefault();
 
@@ -21,6 +23,9 @@ export class StockFinder{
             })
             .then(parsedResponse => {
                 console.log(parsedResponse);
+                this.searchResults = parsedResponse.bestMatches.map(match => {
+                    return { name: match['2. name'], symbol: match['1. symbol'] };
+                });
             })
             .catch(err => console.log(err));
     }
@@ -33,7 +38,12 @@ export class StockFinder{
                     ref={el => this.stockNameInput = el}
                 />
                 <button type="submit">Find</button>
-            </form>
+            </form>,
+            <ul>
+                {
+                    this.searchResults.map(result => <li>{result.name}</li>)
+                }
+            </ul>
         ];
     }
 }
