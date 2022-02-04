@@ -22,6 +22,9 @@ export namespace Components {
     'title'?: string;
   }
 
+  interface UcSpinner {}
+  interface UcSpinnerAttributes extends StencilHTMLAttributes {}
+
   interface UcStockPrice {
     'stockSymbol': string;
   }
@@ -38,12 +41,14 @@ export namespace Components {
 declare global {
   interface StencilElementInterfaces {
     'UcSideDrawer': Components.UcSideDrawer;
+    'UcSpinner': Components.UcSpinner;
     'UcStockPrice': Components.UcStockPrice;
     'UcStockFinder': Components.UcStockFinder;
   }
 
   interface StencilIntrinsicElements {
     'uc-side-drawer': Components.UcSideDrawerAttributes;
+    'uc-spinner': Components.UcSpinnerAttributes;
     'uc-stock-price': Components.UcStockPriceAttributes;
     'uc-stock-finder': Components.UcStockFinderAttributes;
   }
@@ -53,6 +58,12 @@ declare global {
   var HTMLUcSideDrawerElement: {
     prototype: HTMLUcSideDrawerElement;
     new (): HTMLUcSideDrawerElement;
+  };
+
+  interface HTMLUcSpinnerElement extends Components.UcSpinner, HTMLStencilElement {}
+  var HTMLUcSpinnerElement: {
+    prototype: HTMLUcSpinnerElement;
+    new (): HTMLUcSpinnerElement;
   };
 
   interface HTMLUcStockPriceElement extends Components.UcStockPrice, HTMLStencilElement {}
@@ -69,12 +80,14 @@ declare global {
 
   interface HTMLElementTagNameMap {
     'uc-side-drawer': HTMLUcSideDrawerElement
+    'uc-spinner': HTMLUcSpinnerElement
     'uc-stock-price': HTMLUcStockPriceElement
     'uc-stock-finder': HTMLUcStockFinderElement
   }
 
   interface ElementTagNameMap {
     'uc-side-drawer': HTMLUcSideDrawerElement;
+    'uc-spinner': HTMLUcSpinnerElement;
     'uc-stock-price': HTMLUcStockPriceElement;
     'uc-stock-finder': HTMLUcStockFinderElement;
   }

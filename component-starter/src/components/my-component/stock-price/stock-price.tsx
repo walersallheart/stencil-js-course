@@ -134,7 +134,7 @@ export class StockPrice{
         }
 
         if (this.loading) {
-            dataContent = <div class="lds-ring"><div></div><div></div><div></div><div></div></div>;
+            dataContent = <uc-spinner />;
         }
 
         return [
